@@ -1,0 +1,95 @@
+<odoo>
+    <record id="order_view_form" model="ir.ui.view">
+        <field name="name">order.view.form</field>
+        <field name="model">uas.order</field>
+        <field name="arch" type="xml">
+            <form string="Kelas Form">
+                <header>
+                    <!--button confirm baru visible kalo state = draft-->
+                        <button name="action_done" string="Confirmed" states="draft" type="object" class="btn-primary"/>
+                        <button name="action_settodraft" string="Set to Draft" states="canceled" type="object" class="btn-primary"/>
+                        <button name="action_canceled" string="Canceled" states="done" type="object" class="btn-primary"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft, done"></field>
+                </header>
+                <sheet>
+                    <!--smart button-->
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_wiz_uas" type="object" string="Update Order" class="oe_stat_button" icon="fa-pencil-square-o"></button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="nomor"/>
+                            <field name="customer_id"/>
+<!--                            <field name="product_id"/>-->
+<!--                            <field name="semester"/>-->
+                            <field name="tahun"/>
+<!--                            <field name="customer_id"/>-->
+                        </group>
+                         <group>
+                             <field name="date"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Products" name="uas_product">
+                            <field name="line_ids" nolabel="1" option="{'related_on_button':True">
+                                <tree editable="bottom">
+                                    <field name="mhs_id"/>
+                                    <field name="jumlahh"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="order_view_list" model="ir.ui.view">
+        <field name="name">order.view.list</field>
+        <field name="model">uas.order</field>
+        <field name="arch" type="xml">
+            <tree string="List KHS">
+                <field name="name"/>
+<!--                <field name="semester"/>-->
+                <field name="tahun"/>
+                <field name="nomor"/>
+<!--                <field name="customer_id"/>-->
+                <field name="date"/>
+                <field name="state" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="order_view_search" model="ir.ui.view">
+        <field name="name">order.view.search</field>
+        <field name="model">uas.order</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+<!--                <field name="semester"/>-->
+                <field name="tahun"/>
+                <field name="nomor"/>
+<!--                <field name="customer_id"/>-->
+                <field name="date"/>
+<!--                <field name="status" widget="radio"/>-->
+                <filter string="Draft" name="draft_filter" domain="[('state', '=', 'draft')]"/>
+                <filter string="Confirmed" name="confirmed_filter" domain="[('state', '=', 'confirmed')]"/>
+                <separator/>
+                <group string="Group By..." expand="0" name="groupby">
+                    <filter string="State" name="by_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="order_action" model="ir.actions.act_window">
+        <field name="name">order</field>
+        <field name="res_model">uas.order</field>
+        <field name="view_id" ref="order_view_list"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="order_menu" parent="uas_menu" name="Order" action="order_action" sequence="20"/>
+
+</odoo>

@@ -1,0 +1,31 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_customer_user","Access Customer for User Sales","model_uas_customer","sales_team.group_sale_salesman_all_leads",1,1,1,0
+"access_customer_admin","Access Customer for Admin","model_uas_customer","sales_team.group_sale_manager",1,1,1,1
+
+"access_order_user","Access Order for User Sales","model_uas_order","sales_team.group_sale_salesman_all_leads",1,1,1,0
+"access_order_admin","Access Order for Admin","model_uas_order","sales_team.group_sale_manager",1,1,1,1
+
+"access_product_user","Access Product for User Sales","model_uas_product","sales_team.group_sale_salesman_all_leads",1,1,1,0
+"access_product_admin","Access Product for Admin","model_uas_product","sales_team.group_sale_manager",1,1,1,1
+
+"access_product_lines_user","Access Product for User Sales","model_uas_product_lines","sales_team.group_sale_salesman_all_leads",1,1,1,0
+"access_product_lines_admin","Access Product for Admin","model_uas_product_lines","sales_team.group_sale_manager",1,1,1,1
+
+"access_order_lines_user","Access Product for User Sales","model_uas_order_lines","sales_team.group_sale_salesman_all_leads",1,1,1,0
+"access_order_lines_admin","Access Product for Admin","model_uas_order_lines","sales_team.group_sale_manager",1,1,1,1
+
+"access_rawmaterial_user","Access Rawmaterial for User Sales","model_uas_rawmaterial","sales_team.group_sale_salesman_all_leads",1,1,1,0
+"access_rawmaterial_admin","Access Rawmaterial for Admin","model_uas_rawmaterial","sales_team.group_sale_manager",1,1,1,1
+
+"access_employee_user","Access Employee for User Sales","model_uas_employee","sales_team.group_sale_salesman_all_leads",1,1,1,0
+"access_employee_admin","Access Employee for Admin","model_uas_employee","sales_team.group_sale_manager",1,1,1,1
+
+"access_shipment_user","Access Shipment for User Sales","model_uas_shipment","sales_team.group_sale_salesman_all_leads",1,1,1,0
+"access_shipment_admin","Access Shipment for Admin","model_uas_shipment","sales_team.group_sale_manager",1,1,1,1
+
+
+"access_wizorder_user","Access Kelas for User Sales","model_wiz_uas_order","sales_team.group_sale_salesman_all_leads",1,1,1,0
+"access_wizorder_admin","Access Kelas for Admin","model_wiz_uas_order","sales_team.group_sale_manager",1,1,1,1
+
+"access_order_lines_wiz_user","Access Kelas_lines for User Sales","model_wiz_uas_order_lines","sales_team.group_sale_salesman_all_leads",1,1,1,0
+"access_order_lines_wiz_admin","Access Kelas_lines for Admin","model_wiz_uas_order_lines","sales_team.group_sale_manager",1,1,1,1

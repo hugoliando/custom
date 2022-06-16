@@ -1,0 +1,91 @@
+<odoo>
+    <record id="shipment_view_form" model="ir.ui.view">
+        <field name="name">shipment.view.form</field>
+        <field name="model">uas.shipment</field>
+        <field name="arch" type="xml">
+            <form string="Shipment Form">
+                <header>
+                    <!--button confirm baru visible kalo state = draft-->
+                        <button name="action_confirmed" string="Confirm" states="draft" type="object" class="btn-primary"/>
+                        <button name="action_settodraft" string="Set to Draft" states="confirmed" type="object" class="btn-primary"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft, confirmed"></field>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="order_id"/>
+<!--                            <field name="customer_id"/>-->
+                            <field name="price"/>
+<!--                            <field name="product_id"/>-->
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+<!--                    <notebook>-->
+<!--                        <page string="Votes" name="votes">-->
+<!--                            <field name="voting_ids" readonly="1">-->
+<!--                                <tree decoration-info="vote == 'abstain'" decoration-warning= "vote == 'yes'">-->
+<!--                                        <field name="name"/>-->
+<!--                                        <field name="date"/>-->
+<!--                                        <field name="voter_id"/>-->
+<!--                                        <field name="vote"/>-->
+<!--                                        <field name="state"/>-->
+<!--                                </tree>-->
+<!--                            </field>-->
+<!--                        </page>-->
+<!--                    </notebook>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="shipment_view_list" model="ir.ui.view">
+        <field name="name">shipment.view.list</field>
+        <field name="model">uas.shipment</field>
+        <field name="arch" type="xml">
+            <tree string="List KHS">
+                <field name="name"/>
+<!--                <field name="customer_id"/>-->
+                <field name="order_id"/>
+                <field name="price"/>
+<!--                <field name="product_id"/>-->
+                <field name="date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="shipment_view_search" model="ir.ui.view">
+        <field name="name">shipment.view.search</field>
+        <field name="model">uas.shipment</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="price"/>
+                <field name="order_id"/>
+<!--                <field name="customer_id"/>-->
+<!--                <field name="product_id"/>-->
+<!--                <field name="status" widget="radio"/>-->
+<!--                <filter string="Draft" name="draft_filter" domain="[('state', '=', 'draft')]"/>-->
+<!--                <filter string="Confirmed" name="confirmed_filter" domain="[('state', '=', 'confirmed')]"/>-->
+                <separator/>
+                <group string="Group By..." expand="0" name="groupby">
+                    <filter string="State" name="by_state" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="shipment_action" model="ir.actions.act_window">
+        <field name="name">shipment</field>
+        <field name="res_model">uas.shipment</field>
+        <field name="view_id" ref="shipment_view_list"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="shipment_menu" parent="uas_menu" name="Shipment" action="shipment_action" sequence="50"/>
+
+</odoo>
